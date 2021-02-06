@@ -9,6 +9,7 @@
 
     <EditText
         android:background="#FFFFFF"
+        android:layout_margin="5dp"
         android:id="@+id/edit_text_city"
         android:gravity="center"
         android:padding="8dp"
@@ -24,6 +25,7 @@
     <Button
         android:id="@+id/button_show_weather"
         android:padding="8dp"
+        android:layout_margin="5dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Показать погоду"

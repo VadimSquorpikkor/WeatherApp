@@ -2,11 +2,10 @@ package com.squorpikkor.weatherapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -47,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
     private void getWeather() {
         String city = editTextCity.getText().toString().trim();
         if (!city.isEmpty()) {
+            try {
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
             DownloadWeatherTask task = new DownloadWeatherTask();
             String url = String.format(WEATHER_URL, city, apiKey);
             task.execute(url);
